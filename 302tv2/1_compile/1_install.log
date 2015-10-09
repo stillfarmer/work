@@ -1,0 +1,51 @@
+No PROFILE name input, use mt7620a as default!
+/home/wudi/work/302test/customer/target/mt7620a
+Updating feed 'customer' from '/home/wudi/work/302test/customer/package' ...
+Create index file './feeds/customer.index' 
+Collecting package info: done
+Updating feed 'luci' from '/home/wudi/work/302test/customer/luci' ...
+Create index file './feeds/luci.index' 
+Collecting package info: done
+Installing all packages from feed customer.
+Installing package 'antiportscan'
+Installing package 'busybox'
+Installing package 'cms'
+Installing package 'iwinfo'
+Installing package 'board'
+Installing package 'kantiportscan'
+Installing package 'led'
+Installing package 'rt2860v2'
+Installing package 'rt_rdm'
+Installing package 'baseinfo'
+Installing package 'testinfo'
+Installing package 'usrstat'
+Installing package 'lighttpd'
+Installing package 'miniupnpd'
+Installing package 'myfile'
+Installing package 'net_detect'
+Installing package 'opkg'
+Installing package 'samba36'
+Installing package 'smartwifi'
+Installing package 'usbtest'
+Installing package 'ushare'
+Collecting package info: done
+Installing all packages from feed luci.
+Installing package 'community-profiles'
+Installing package 'freifunk-common'
+Installing package 'freifunk-firewall'
+Installing package 'freifunk-gwcheck'
+Installing package 'freifunk-mapupdate'
+Installing package 'freifunk-p2pblock'
+Installing package 'freifunk-policyrouting'
+Installing package 'freifunk-watchdog'
+Installing package 'luci'
+Installing package 'meshwizard'
+WARNING: No feed for package 'webdav' found, maybe it's already part of the standard packages?
+Installing package 'remote-update'
+*****************************************************************************************
+*****************************************************************************************
+********                                                                        *********
+********  important --- make sure to run make menuconfig prior to running make  *********
+********                                                                        *********
+*****************************************************************************************
+*****************************************************************************************

@@ -1,0 +1,7 @@
+1. bug description
+
+   When wan page info, wan connection , pppoe saved, it will cpu0.
+
+2. log
+
+   see minicom.cap;

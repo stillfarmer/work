@@ -1,0 +1,34 @@
+1. 
+	cd customer; ./install.sh;
+   
+	PROFILE_DIR = $CURR_DIR/target/mt7620a;
+
+	if [ ! -d ../tmp ]; then
+		mkdir ../tmp
+	fi
+
+	1.1 Install customer openwrt changes
+
+
+	1.2 Install customer feeds
+
+		cp ../feeds.conf.default ../feeds.conf;
+
+		echo "src-link customer ${PWD}/package" >> ../feeds.conf
+		echo "src-link luci ${PWD}/luci" >> ../feeds.conf
+		cd ../
+
+		./scripts/feeds update customer
+		./scripts/feeds update luci
+		./scripts/feeds install -a -p customer
+		./scripts/feeds install -a -p luci
+	
+	1.3 Prepare Profile related files
+
+		cd $CURR_DIR
+		cp -af $PROFILE_DIR ../tmp/openwrt
+		find ../tmp/openwrt -name .svn | xargs rm -rf
+		cp -af ../tmp/openwrt/. ../
+		rm -rf ../tmp/openwrt
+
+	1.4 run make menuconfig prior to running make.
