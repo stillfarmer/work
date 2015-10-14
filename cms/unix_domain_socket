@@ -1,0 +1,43 @@
+/kernel/include/linux/un.h
+
+#define UNIX_PATH_MAX   108
+
+struct sockaddr_un {
+	sa_family_t sun_family; /* AF_UNIX */
+	char sun_path[UNIX_PATH_MAX];   /* pathname */
+};
+
+int main()
+{
+	struct sockaddr_un serverAddr;
+
+	if ((fd = socket(AF_LOCAL, SOCK_STREAM, 0)) < 0) 
+	{
+		printf("Could not create socket");
+		return fd;
+	}
+
+	memset(&serverAddr, 0, sizeof(serverAddr));
+	serverAddr.sun_family = AF_LOCAL;
+	strncpy(serverAddr.sun_path, SMD_MESSAGE_ADDR, sizeof(serverAddr.sun_path));
+
+	rc = bind(fd, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
+	if (rc != 0)
+	{
+		cmsLog_error("bind to %s failed, rc=%d errno=%d", SMD_MESSAGE_ADDR, rc, errno);
+		close(fd);
+		return -1;
+	}
+
+	rc = listen(fd, SMD_MESSAGE_BACKLOG);
+	if (rc != 0)
+	{
+		cmsLog_error("listen to %s failed, rc=%d errno=%d", SMD_MESSAGE_ADDR, rc, errno);
+		close(fd);
+		return -1;
+	}
+
+	cmsLog_notice("smd msg socket opened and ready (fd=%d)", fd);
+
+	return fd;
+}

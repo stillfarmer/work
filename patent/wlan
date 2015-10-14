@@ -1,0 +1,19 @@
+wlan
+
+portal
+
+bwlimit   //只有一个用户时关闭限速模块
+
+wireless  
+
+ethernet  //当lan侧没有用户接入时， down掉以太网接口。
+                                或者down掉pppoe, dhcp server, dhcp client, dnsproxy连接。
+
+			对运营商来说， 节省带宽。
+
+			对用户来说， 节能。
+		  //
+
+dns
+
+

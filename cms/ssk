@@ -1,0 +1,20 @@
+
+
+
+
+1. main
+   {
+       1.1 cmsLog_init(EID_SSK);
+	       /* to resolve */
+
+       1.2 ssk_init 
+	       /**/
+	       ssk_init
+	       {
+		       setsid();
+			   1.2.1  setsid()
+			          /* to resolv */
+		   
+		       cmsMsg_init(EID_SSK, &msgHandle);
+	       }
+   }

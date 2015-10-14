@@ -1,0 +1,55 @@
+header
+1. typedef struct
+{
+	CmsEntityId  eid;        /**< Entity id of the owner of this handle. */
+	SINT32       commFd;     /**< communications fd */
+	UBOOL8       standalone; /**< are we running without smd, for unittests */
+	CmsMsgHeader *putBackQueue;  /**< Messages pushed back into the handle. */
+} CmsMsgHandle;
+
+
+
+code
+1. cmsMsg_init
+   {
+       oalMsg_init
+
+	   1.1 oalMsg_init
+	       /*  */
+
+		   oalMsg_init
+		   {
+		       cmsMsgHandle *handle;
+		       eInfo = cmsEid_getEntityInfo(eid);   // eid.c
+
+			   handle = cmsMem_alloc;
+
+			   handle->eid = eid;
+			   handle->commFd = socket(AF_LOCAL, SOCK_STREAM, 0);
+			   memset(&serverAddr, 0, sizeof(serverAddr));
+			   serverAddr.sun_family = AF_LOCAL;
+			   strncpy(serverAddr.sun_path, SMD_MESSAGE_ADDR, sizeof(serverAddr.sun_path));
+
+			   rc = connect(handle->commFd, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
+
+			   { 
+			       /* sent a launched message to smd*/
+				   CmsMsgHeader launchMsg = EMPTY_MSG_HEADER;
+
+				   launchMsg.type = CMS_MSG_APP_LAUNCHED;
+				   launchMsg.src = (eInfo->flags & EIF_MULTIPLE_INSTANCES) ? MAKE_SPECIFIC_EID(getpid(), eid) : eid;
+				   launchMsg.dst = EID_SMD;
+				   launchMsg.flags_event = 1;
+				   launchMsg.wordData = getpid();
+
+				   if (oalMsg_send() != CMSRET_SUCCESS)
+				   {
+				        close(handle->commFd);
+				        cmsMem_free(handle)
+						return CMSRET_INTERNAL_ERROR;
+				   }
+			   }
+
+			   *msgHandle = (void *) handle;
+		   }
+   }
