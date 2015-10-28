@@ -1,0 +1,45 @@
+
+1. data structure
+
+    drivers/wlan/include/pal/ieee80211_defs.h
+
+    #define WMM_NUM_AC      4   /* 4 AC categories */
+
+
+    1.1
+    struct wmmParams {
+        A_UINT8     wmmp_acm;           /* ACM parameter */
+        A_UINT8     wmmp_aifsn;         /* AIFSN parameters */
+        A_UINT8     wmmp_logcwmin;      /* cwmin in exponential form */
+        A_UINT8     wmmp_logcwmax;      /* cwmax in exponential form */
+        A_UINT16    wmmp_txopLimit;     /* txopLimit */
+    #ifdef NOACK_SUPPORT            
+        A_UINT8     wmmp_noackPolicy;   /* No-Ack Policy: 0=ack, 1=no-ack */
+    #endif    
+    };
+
+
+    1.2
+    struct chanAccParams{
+        A_INT8              cap_info;  /* ver. of the current param set */
+        struct wmmParams    cap_wmmParams[WMM_NUM_AC]; /*WMM params for each access class */ 
+    };
+
+
+    1.3
+    /*
+     * WMM/802.11e information element.
+     */
+    struct ieee80211_ie_wmm {
+        A_UINT8 wmm_id;     /* IEEE80211_ELEMID_VENDOR */
+        A_UINT8 wmm_len;    /* length in bytes */
+        A_UINT8 wmm_oui[3]; /* 0x00, 0x50, 0xf2 */
+        A_UINT8 wmm_type;   /* OUI type */
+        A_UINT8 wmm_subtype;    /* OUI subtype */
+        A_UINT8 wmm_version;    /* spec revision */
+        A_UINT8 wmm_info;   /* QoS info */
+    } __ATTRIB_PACK;
+
+
+
+
