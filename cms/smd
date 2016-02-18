@@ -502,6 +502,41 @@
 
 			}
 			/* end of smd_main 2.2 */
+      
+
+
+3. interest list
+
+   in processMessage oal_event.c
+
+   if ( EID_SMD == (*msg)->dst)
+   {
+       if ( (*msg)->flags_event)
+       {
+           This is an event msg sent to smd.
+       }
+
+       else
+       {
+           /* this is an request msg sent to smd */
+
+           case CMS_MSG_REGISTER_EVENT_INTEREST:
+               processRegisterEventInterest(dInfo, msg, TRUE);
+               break;
+
+           case CMS_MSG_UNREGISTER_EVENT_INTEREST:
+               processRegisterEventInterest(dInfo, msg, FALSE);
+               break;
+
+           case CMS_MSG_REGISTER_DELAYED_MSG:
+               processRegisterDelayedMsg(dInfo, msg, TRUE);
+               break;
+
+           case CMS_MSG_UNREGISTER_DELAYED_MSG:
+               processRegisterDelayedMsg(dInfo, msg, FALSE);
+               break;
+       }
+   }
 
 
 
@@ -509,9 +544,8 @@
 
 
 
-		    
-	         
 
 
 
-       
+
+

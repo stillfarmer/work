@@ -1,0 +1,116 @@
+1. url http://standards.ieee.org/about/get/802/802.11.html
+
+3. Definitions, acronyms and abbreviations
+
+    3.1 Definitions
+
+        (1) access point (AP): An entity that contains one station (STA) and provides access to the distribution
+                services, via the wireless medium (WM) for associated STAs.
+
+        (2) basic service area (BSA): The area containing the members of a basic service set (BSS). It might contain
+                members of other BSSs.
+
+        (3) basic service set (BSS): A set of stations (STAs) that have successfully synchronized using the JOIN
+                service primitives14 and one STA that has used the START primitive. Alternatively, a set of STAs that have
+                used the START primitive specifying matching mesh profiles where the match of the mesh profiles has been
+                verified via the scanning procedure. Membership in a BSS does not imply that wireless communication with
+                all other members of the BSS is possible.
+
+        (4) basic service set (BSS) transition: A station (STA) movement from one BSS to another BSS in the same
+                extended service set (ESS).
+
+        (5) BSS Max idle period: A time period during which the access point (AP) does not disassociate a station
+                (STA) due to nonreceipt of frames from that STA.
+
+        (6) channel: An instance of communications medium use for the purpose of passing protocol data units (PDUs)
+                between two or more stations (STAs).
+
+        (7) channel spacing: The difference between the center frequencies of two nonoverlapping and adjacent
+                channels of the radio transmitter.
+
+        (8) contention-free period (CFP): The time period during the operation of a point coordination function (PCF)
+                when the right to transmit is assigned to stations (STAs) solely by a point coordinator (PC), allowing frame
+                exchanges to occur between members of the basic service set (BSS) without contention for the wireless
+                medium (WM).
+
+        (9) contention period (CP): The time period outside of the contention-free period (CFP) in a point-coordinated
+                basic service set (BSS). In a BSS where there is no point coordinator (PC), this corresponds to the entire
+                time of operation of the BSS.
+
+        (10) extended service area (ESA): The area within which members of an extended service set (ESS) can
+                communicate. An ESA is larger than or equal to a basic service area (BSA) and might involve several basic
+                service sets (BSSs) in overlapping, disjointed, or both configurations.
+
+        (11) extended service set (ESS): A set of one or more interconnected basic service sets (BSSs) that appears as a
+                single BSS to the logical link control (LLC) layer at any station (STA) associated with one of those BSSs.
+
+        (12) extended service set (ESS) transition: A station (STA) movement from one basic service set (BSS) in one
+                ESS to another BSS in a different ESS.
+
+        (13) transmitted basic service set identifier (BSSID): The BSSID included in the MAC Header transmitter
+                address field of a Beacon frame when the multiple BSSID capability is supported.
+
+        (14) destination mesh station (STA): A mesh STA that is the final destination of a MAC service data unit
+                (MSDU). This mesh STA might reside in a proxy mesh gate that might forward the MSDU to a STA outside
+                of the MBSS. A destination mesh STA might be an end station as defined in IEEE Std 802.1.
+
+        (15) 
+
+
+    3.3 Abrrevitions and acronyms
+
+        (1) AIFS:  arbitration interframe space
+        (2) AIFSN: arbitration interframe space number
+        (3) CW:    contention window
+
+
+
+4. General description
+
+    4.3 Components of the IEEE 802.11 architechture
+
+        4.3.7 QoS BSS: The QoS network
+
+            For infrastructure BSS and IBSS, this standard provides two mechanisms for the support of applications
+            with QoS requirements.
+
+            (1) EDCA(enhanced distributed channel access): delivers traffic based on
+                    differentiating user priorities (UPs). This differentiation is achieved by varying the following for different
+                    UP values:
+
+                a. Amount of time a STA senses the channel to be idle before backoff or transmission, or
+                b. The length of the contention window to be used for the backoff, or
+                c. The duration a STA may transmit after it acquires the channel.
+
+            (2) HCCA ( hybrid coordination function (HCF) controlled channel access): allows for the reservation of transmission 
+                    opportunities (TXOPs) with the hybrid coordinator(HC).
+
+            (3) 
+
+
+
+
+
+
+
+
+8.
+
+    8.4
+
+        8.4.3
+
+
+            8.4.3.21 EDCA Parameter Set element
+
+
+
+
+
+
+
+
+
+
+
+
